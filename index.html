@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Game Development Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h2>Space Shooter Game dengan Python</h2>
+        <p>Panduan membuat game shooter sederhana menggunakan Pygame.</p>
+    </header>
+    <section id="vid">
+    <video autoplay muted loop id="myVideo">
+        <source src="scrgm.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    </section>
+    <section id="pendahuluan">
+        <p>Pembuatan game sederhana dengan Python memungkinkan pengembang belajar pemrograman secara praktis sambil mengasah keterampilan pembuatan game. Space Shooter adalah contoh game di mana pemain mengendalikan pesawat luar angkasa dan melawan robot musuh, termasuk bos besar dengan HP tertentu.</p>
+    </section>
+    <section id="libraries">
+        <h2>Pustaka yang Digunakan</h2>
+        <p>Game ini menggunakan pustaka Pygame, yang merupakan pustaka Python untuk pengembangan game 2D dengan fitur rendering grafis, pengendalian input, dan pemrosesan audio.</p>
+        <ul>
+            <li><strong>Pygame:</strong> Pustaka utama untuk pengolahan grafis, kontrol input, dan suara.</li>
+            <li><strong>Sys:</strong> Modul sistem bawaan Python.</li>
+            <li><strong>Random:</strong> Untuk pengacakan posisi munculnya musuh.</li>
+            <li><strong>Time:</strong> Untuk mengatur waktu dan skor.</li>
+        </ul>
+    </section>
+
+    <section id="project-structure">
+        <h2>Struktur Proyek</h2>
+        <pre>
+project-folder/
+|-- main.py
+|-- assets/
+    |-- img/ 
+        |-- player.png
+        |-- robot.png
+        |-- big_robot.png
+    |-- sound/ 
+        |-- strgm.mp3
+        |-- sndblt.mp3
+        |-- dftbs.mp3
+        |-- vctrgm.mp3
+        </pre>
+    </section>
+
+    <section id="code-explanation">
+        <h2>Penjelasan Bagian Kode Penting</h2>
+        <p>Kode sumber meliputi beberapa bagian penting seperti:</p>
+        <ul>
+            <li><strong>Inisialisasi Pygame dan Pustaka Suara:</strong></li>
+            <pre><code>pygame.init()
+pygame.mixer.init()
+start_sound = pygame.mixer.Sound('assets/sound/strgm.mp3')</code></pre>
+            <li><strong>Logika Gerakan dan Tembakan Pemain:</strong></li>
+            <pre><code>if keys[pygame.K_LEFT] and player_x > 0:
+    player_x -= player_velocity
+if keys[pygame.K_UP] and shoot_timer >= shoot_delay:
+    bullets.append({'x': player_x, 'y': player_y, 'distance': 0})</code></pre>
+            <li><strong>Fungsi Utama untuk Menggambar HP Bar Bos Besar:</strong></li>
+            <pre><code>def draw_hp_bar(surface, x, y, hp, max_hp):
+    bar_width = 100
+    bar_height = 10
+    fill = (hp / max_hp) * bar_width
+    pygame.draw.rect(surface, (255, 0, 0), (x, y, bar_width, bar_height))
+    pygame.draw.rect(surface, (0, 255, 0), (x, y, fill, bar_height))</code></pre>            
+        </ul>
+    </section>
+
+    <section id="download">
+        <p>Unduh Proyek termasuk semua Komponen</p>
+        <button class="btn" id="downloadButton" onclick="startDownload()">
+            <i class="fa fa-download"></i> Download
+        </button><code> ps.zip:@ttksantaproject</code>
+    </section>
+    <section id="kesimpulan">
+        <h2>Kesimpulan</h2>
+        <p>Logika kemenangan dan kekalahan dalam game Space Shooter ditentukan oleh berbagai kondisi yang dipantau selama gameplay. Kemenangan dicapai dengan menghancurkan musuh dan bos besar, sementara kekalahan terjadi ketika pemain kehabisan HP atau musuh mencapai area aman. Dengan logika ini, permainan memberikan tantangan sekaligus penghargaan yang sesuai bagi pemain, menciptakan pengalaman bermain yang seru dan menantang.</p>
+        <p>Logika semacam ini juga bisa diperluas dengan menambahkan elemen seperti power-up untuk meningkatkan daya tahan pemain, tambahan level, atau mode permainan yang lebih kompleks untuk meningkatkan daya tarik game.</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Geri Ramadansyah. Siapapun mempunyai hak cipta atas karyanya.</p>
+    </footer>
+    <script>
+        function startDownload() {
+            var button = document.getElementById('downloadButton');
+            
+            button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Verifikasi';
+            button.disabled = true; 
+        
+            setTimeout(function() {
+                window.location.href = 'download/project.zip'; 
+                button.innerHTML = '<i class="fa fa-download"></i> Download'; 
+                button.disabled = false; 
+            }, 3000); 
+        }
+    </script>
+</body>
+</html>
