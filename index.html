@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Game Development Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <p>Panduan membuat game shooter sederhana menggunakan Pygame.</p>
+    </header>
+    <section id="vid">
+    <video autoplay muted loop id="myVideo">
+        <source src="scrgm.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    </section>
+    <section id="pendahuluan">
+        <p>Pembuatan game sederhana dengan Python memungkinkan pengembang belajar pemrograman secara praktis sambil mengasah keterampilan pembuatan game. Space Shooter adalah contoh game di mana pemain mengendalikan pesawat luar angkasa dan melawan robot musuh, termasuk bos besar dengan HP tertentu.</p>
+    </section>
+    <section id="libraries">
+        <h3>Pustaka yang Digunakan</h3>
+        <p>Game ini menggunakan pustaka Pygame, yang merupakan pustaka Python untuk pengembangan game 2D dengan fitur rendering grafis, pengendalian input, dan pemrosesan audio.</p>
+        <ul>
+            <li><strong>Pygame:</strong> Pustaka utama untuk pengolahan grafis, kontrol input, dan suara.</li>
+            <li><strong>Sys:</strong> Modul sistem bawaan Python.</li>
+            <li><strong>Random:</strong> Untuk pengacakan posisi munculnya musuh.</li>
+            <li><strong>Time:</strong> Untuk mengatur waktu dan skor.</li>
+        </ul>
+    </section>
+
+    <section id="project-structure">
+        <h3>Struktur Proyek</h3>
+        <pre>
+project-folder/
+|-- main.py
+|-- assets/
+    |-- img/ 
+        |-- player.png
+        |-- robot.png
+        |-- big_robot.png
+    |-- sound/ 
+        |-- strgm.mp3
+        |-- sndblt.mp3
+        |-- dftbs.mp3
+        |-- vctrgm.mp3
+        </pre>
+    </section>
+
+    <section id="code-explanation">
+        <h3>Penjelasan Bagian Kode Penting</h3>
+        <p>Kode sumber meliputi beberapa bagian penting seperti:</p>
+        <ul>
+            <li><strong>Inisialisasi Pygame dan Pustaka Suara:</strong></li>
+            <pre><code>pygame.init()
+pygame.mixer.init()
+start_sound = pygame.mixer.Sound('assets/sound/strgm.mp3')</code></pre>
+            <li><strong>Logika Gerakan dan Tembakan Pemain:</strong></li>
+            <pre><code>if keys[pygame.K_LEFT] and player_x > 0:
+    player_x -= player_velocity
+if keys[pygame.K_UP] and shoot_timer >= shoot_delay:
+    bullets.append({'x': player_x, 'y': player_y, 'distance': 0})</code></pre>
+            <li><strong>Fungsi Utama untuk Menggambar HP Bar Bos Besar:</strong></li>
+            <pre><code>def draw_hp_bar(surface, x, y, hp, max_hp):
+    bar_width = 100
+    bar_height = 10
+    fill = (hp / max_hp) * bar_width
+    pygame.draw.rect(surface, (255, 0, 0), (x, y, bar_width, bar_height))
+    pygame.draw.rect(surface, (0, 255, 0), (x, y, fill, bar_height))</code></pre>            
+        </ul>
+    </section>
+
+    <section id="download">
+        <p>Unduh Proyek termasuk semua Komponen</p>
+        <button class="btn" id="downloadButton" onclick="startDownload()">
+            <i class="fa fa-download"></i> Download
+        </button>
+    </section>
+    <section id="kesimpulan">
+        <h3>Kesimpulan</h3>
+        <p>Logika kemenangan dan kekalahan dalam game Space Shooter ditentukan oleh berbagai kondisi yang dipantau selama gameplay. Kemenangan dicapai dengan menghancurkan musuh dan bos besar, sementara kekalahan terjadi ketika pemain bertabrakan musuh. Dengan logika ini, permainan memberikan tantangan sekaligus penghargaan yang sesuai bagi pemain, menciptakan pengalaman bermain yang seru dan menantang.</p>
+        <p>Logika semacam ini juga bisa diperluas dengan menambahkan elemen seperti power-up untuk meningkatkan daya tahan pemain, tambahan level, atau mode permainan yang lebih kompleks untuk meningkatkan daya tarik game.</p>
+    </section>
+    <main>
+        <i>situs lainnya</i>
+        <div class="site-container-wrapper">
+            <section class="site-container" id="siteContainer">
+                <div class="site-box">
+                    <h2>Halaman Masuk</h2>
+                    <p>Membuat halaman masuk untuk situs sederhana</p>
+                    <a href="https://santa-grd.github.io/create-a-login-form/" arget="_blank">
+                        <iframe src="https://santa-grd.github.io/create-a-login-form/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/create-a-login-form/">Kunjungi</a>
+                </div>
+                <div class="site-box">
+                    <h2>Cek Pasangan</h2>
+                    <p>Masukan nama anda untuk melihat pasangan</p>
+                    <a href="https://santa-grd.github.io/cek_pasangan/" target="_blank">
+                        <iframe src="https://santa-grd.github.io/cek_pasangan/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/cek_pasangan/">Kunjungi</a>
+                </div>
+                <div class="site-box">
+                    <h2>Cek Khodam</h2>
+                    <p>Sepertinya anda memiliki khodam cek sekarang</p>
+                    <a href="https://santa-grd.github.io/cekkhodam/" target="_blank">
+                        <iframe src="https://santa-grd.github.io/cekkhodam/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/cekkhodam/">Kunjungi</a>
+                </div>
+                <div class="site-box">
+                    <h2>Permainan Teka-Teki</h2>
+                    <p>Cobalah permainan untuk mengasah pikiran anda</p>
+                    <a href="https://santa-grd.github.io/Permainan/" target="_blank">
+                        <iframe src="https://santa-grd.github.io/Permainan/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/Permainan/">Kunjungi</a>
+                </div>
+                <div class="site-box">
+                    <h2>Album Gambar</h2>
+                    <p>Cari gambar menarik yang mungkin anda suka</p>
+                    <a href="https://santa-grd.github.io/collection-of-various-images/" target="_blank">
+                        <iframe src="https://santa-grd.github.io/collection-of-various-images/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/collection-of-various-images/">Kunjungi</a>
+                </div>
+                <div class="site-box">
+                    <h2>Kamus Python</h2>
+                    <p>Membuat aplikasi penerjemah sederhana dengan modul googletrans dipyhton mudah tersedia code lengkapnya</p>
+                    <a href="https://santa-grd.github.io/apptranslate_python/" target="_blank">
+                        <iframe src="https://santa-grd.github.io/apptranslate_python/" loading="lazy"></iframe>
+                    </a>
+                    <a href="https://santa-grd.github.io/apptranslate_python/">Kunjungi</a>
+                </div>
+          </section>
+            <div class="fog-effect"></div>
+        </div>
+        <div class="button-container">
+        <span id="showMoreBtn" onclick="showAllSites()">Perluas</span>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 gryrmd_sy. Siapapun mempunyai hak cipta atas karyanya.</p>
+    </footer>
+    <script>
+        function startDownload() {
+            var button = document.getElementById('downloadButton');
+            
+            button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Verifikasi';
+            button.disabled = true; 
+        
+            setTimeout(function() {
+                window.location.href = 'download/pygame004.zip'; 
+                button.innerHTML = '<i class="fa fa-download"></i> Download'; 
+                button.disabled = false; 
+            }, 5000); 
+        }
+        function showAllSites() {
+            const siteContainerWrapper = document.querySelector(".site-container-wrapper");
+            const fogEffect = document.querySelector(".fog-effect");
+            const showMoreBtn = document.getElementById("showMoreBtn");
+        
+            if (siteContainerWrapper.style.maxHeight === "none") {
+                siteContainerWrapper.style.maxHeight = "200px";
+                fogEffect.style.display = "block"; 
+                showMoreBtn.textContent = "Perluas"; 
+            } else {
+                siteContainerWrapper.style.maxHeight = "none";
+                fogEffect.style.display = "none"; 
+                showMoreBtn.textContent = "Sembunyikan"; 
+            }
+        }
+        
+    </script>
+</body>
+</html>
